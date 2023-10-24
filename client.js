@@ -43,15 +43,70 @@ console.log('array of employee data: ',  employees );
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
+// function findEmployee(employeeName) {
+//   for (employee of employees) {
+//     if (employeeName === employee.name) {
+//       console.log(employee);
+//       return employee;
+//     }
+//   }
+//   console.log('Search not found.');
+// }
 
+// findEmployee('Jem')
 
+// function bonusCalculator(employeeName) {
+//   let bonusDetails = {};
+//   for (employee of employees) {
+//     if (employee.reviewRating <= 2) {
+//       bonusDetails.bonusPercentage = 0.00;
+//     }
+//     else if (employee.reviewRating === 3) {
+//       bonusDetails.bonusPercentage = 0.04;
+//     }
+//   }
+// return bonusDetails // = {
+  //   name:'x',
+  //   bonusPercentage:'x',
+  //   totalCompensation:'x',
+  //   totalBonus:'x'
+  // }
+// }
+
+// console.log(bonusCalculator('Scout'));
 
 // This function will calculate 1 employee's bonus!
 //
 function calculateIndividualEmployeeBonus( employee ) {  
   // your logic here
-  
-  
+  let bonusPercentage = 0;
+  if (employee.reviewRating <= 2) {
+    bonusPercentage = 0.00;
+  }
+  else if (employee.reviewRating === 3) {
+    bonusPercentage = 0.04;
+  }
+  else if (employee.reviewRating === 4) {
+    bonusPercentage = 0.06;
+  }
+  else if (employee.reviewRating === 5) {
+    bonusPercentage = 0.1;
+  } else {
+    console.log('Invalid Review Rating');
+  }
+  if (employee.employeeNumber.length === 4) {
+    bonusPercentage += 0.05;
+  }
+  if (employee.annualSalary > 65000) {
+    bonusPercentage -= 0.01;
+  }
+  if (bonusPercentage > 0.13) {
+    bonusPercentage = 0.13;
+  }
+  if (bonusPercentage < 0) {
+    bonusPercentage = 0;
+  }
   // return new object with bonus results
-
+  return bonusPercentage
 }
+console.log('bonus percentage:', calculateIndividualEmployeeBonus(employees[2]));
